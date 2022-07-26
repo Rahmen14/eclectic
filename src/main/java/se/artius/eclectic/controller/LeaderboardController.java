@@ -11,24 +11,24 @@ import java.util.List;
 @RestController
 public class LeaderboardController {
 
-    private LeaderboardService service = new LeaderboardService();
+    private final LeaderboardService service = new LeaderboardService();
 
     @GetMapping("/leaderboard")
     public List<Player> leaderboard() {
-        System.out.println("Skapa spelare och returnera.");
+        System.out.println("Returnera den totala leaderboarden.");
         return service.getLeaderboard();
     }
 
     @GetMapping("/leaderboard/masters")
     public List<Player> leaderboardMasters() {
-        System.out.println("Skapa spelare och returnera.");
-        return service.getLeaderboard();
+        System.out.println("Returnera leaderboarden för Masters.");
+        return service.getLeaderboardMasters();
     }
 
     @GetMapping("/leaderboard/new")
     public List<Player> leaderboardNew() {
-        System.out.println("Skapa spelare och returnera.");
-        return service.getLeaderboard();
+        System.out.println("Returnera leaderboarden för Nya Banan.");
+        return service.getLeaderboardNew();
     }
 
     @GetMapping("/player")

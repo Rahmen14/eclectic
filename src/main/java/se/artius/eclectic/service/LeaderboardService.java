@@ -3,8 +3,7 @@ package se.artius.eclectic.service;
 import org.springframework.stereotype.Service;
 import se.artius.eclectic.domain.Player;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class LeaderboardService {
@@ -14,8 +13,23 @@ public class LeaderboardService {
     }
 
     public List<Player> getLeaderboard() {
-        return createMockdata();
+        List<Player> result = createMockdata();
+        result.sort(Comparator.comparingInt(Player::getTotal));
+        return result;
     }
+
+    public List<Player> getLeaderboardMasters() {
+        List<Player> result = createMockdata();
+        result.sort(Comparator.comparingInt(Player::getMastersTotal));
+        return result;
+    }
+
+    public List<Player> getLeaderboardNew() {
+        List<Player> result = createMockdata();
+        result.sort(Comparator.comparingInt(Player::getNewTotal));
+        return result;
+    }
+
 
     private List<Player> createMockdata() {
         List<Player> result = new ArrayList<>();
