@@ -34,6 +34,6 @@ public class LeaderboardController {
     @GetMapping("/player")
     public Player player() {
         System.out.println("Skapa spelare och returnera.");
-        return new Player("Kalle", "Kula", 1,1,1);
+        return new Player("Kalle", "Kula", 1,1);
     }
 }
