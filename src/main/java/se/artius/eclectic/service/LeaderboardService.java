@@ -2,6 +2,7 @@ package se.artius.eclectic.service;
 
 import org.springframework.stereotype.Service;
 import se.artius.eclectic.domain.Player;
+import se.artius.eclectic.domain.ScoreCard;
 
 import java.util.*;
 
@@ -33,15 +34,15 @@ public class LeaderboardService {
 
     private List<Player> createMockdata() {
         List<Player> result = new ArrayList<>();
-        result.add(new Player("Mattias", "Ryd", 73, 84));
-        result.add(new Player("Linus", "Rahm", 80, 83));
-        result.add(new Player("Johan", "Rahm", 69, 107));
-        result.add(new Player("Per", "Wahlqvist", 89, 89));
-        result.add(new Player("Magnus", "Erenrot", 84, 97));
-        result.add(new Player("Daniel", "Sterner", 85, 102));
-        result.add(new Player("Felix", "Rahm", 99, 99));
-        result.add(new Player("Niclas", "Wallster", 92, 107));
-        result.add(new Player("Lasse", "Lehtiheimo", 98, 103));
+        result.add(new Player("Mattias", "Ryd", new ScoreCard(36, 37), new ScoreCard(37, 47)));
+        result.add(new Player("Linus", "Rahm", new ScoreCard(40, 40), new ScoreCard(44, 39)));
+        result.add(new Player("Johan", "Rahm", new ScoreCard(34, 35), new ScoreCard(53, 54)));
+        result.add(new Player("Per", "Wahlqvist", new ScoreCard(48, 41), new ScoreCard(44, 45)));
+        result.add(new Player("Magnus", "Erenrot", new ScoreCard(43, 41), new ScoreCard(51, 46)));
+        result.add(new Player("Daniel", "Sterner", new ScoreCard(44, 41), new ScoreCard(52, 50)));
+        result.add(new Player("Felix", "Rahm", new ScoreCard(50, 49), new ScoreCard(47, 52)));
+        result.add(new Player("Niclas", "Wallster", new ScoreCard(48, 44), new ScoreCard(53, 54)));
+        result.add(new Player("Lasse", "Lehtiheimo", new ScoreCard(49, 49), new ScoreCard(50, 53)));
         return result;
     }
 }

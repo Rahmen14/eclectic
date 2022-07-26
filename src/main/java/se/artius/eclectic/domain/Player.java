@@ -4,22 +4,18 @@ public class Player {
 
     private String firstName;
     private String lastName;
-    private int mastersTotal;
-    private int mastersIn;
-    private int mastersOut;
-    private int newTotal;
-    private int newIn;
-    private int newOut;
+    private ScoreCard masters;
+    private ScoreCard newCourse;
 
     public Player() {
 
     }
     
-    public Player(String firstName, String lastName, int mastersTotal, int newTotal) {
+    public Player(String firstName, String lastName, ScoreCard masters, ScoreCard newCourse) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mastersTotal = mastersTotal;
-        this.newTotal = newTotal;
+        this.masters = masters;
+        this.newCourse = newCourse;
     }
 
     public String getFirstName() {
@@ -38,55 +34,51 @@ public class Player {
         this.lastName = lastName;
     }
 
+    public ScoreCard getMasters() {
+        return masters;
+    }
+
+    public void setMasters(ScoreCard masters) {
+        this.masters = masters;
+    }
+
+    public ScoreCard getNewCourse() {
+        return newCourse;
+    }
+
+    public void setNewCourse(ScoreCard newCourse) {
+        this.newCourse = newCourse;
+    }
+
     public int getTotal() {
-        return getMastersTotal() + getNewTotal();
+        return getMasters().getTotal() + getNewCourse().getTotal();
     }
 
     public int getMastersTotal() {
-        return mastersTotal;
-    }
-
-    public void setMastersTotal(int mastersTotal) {
-        this.mastersTotal = mastersTotal;
+        return getMasters().getTotal();
     }
 
     public int getMastersIn() {
-        return mastersIn;
+        return getMasters().getIn();
     }
 
-    public void setMastersIn(int mastersIn) {
-        this.mastersIn = mastersIn;
-    }
 
     public int getMastersOut() {
-        return mastersOut;
+        return getMasters().getOut();
     }
 
-    public void setMastersOut(int mastersOut) {
-        this.mastersOut = mastersOut;
-    }
 
     public int getNewTotal() {
-        return newTotal;
+        return getNewCourse().getTotal();
     }
 
-    public void setNewTotal(int newTotal) {
-        this.newTotal = newTotal;
-    }
 
     public int getNewIn() {
-        return newIn;
+        return getNewCourse().getIn();
     }
 
-    public void setNewIn(int newIn) {
-        this.newIn = newIn;
-    }
 
     public int getNewOut() {
-        return newOut;
-    }
-
-    public void setNewOut(int newOut) {
-        this.newOut = newOut;
+        return getNewCourse().getOut();
     }
 }
