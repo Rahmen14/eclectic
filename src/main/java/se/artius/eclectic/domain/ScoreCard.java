@@ -1,29 +1,39 @@
 package se.artius.eclectic.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ScoreCard {
 
-    private int in;
-    private int out;
+    private final Hole[] holes = new Hole[18];
 
-    public ScoreCard(int in, int out) {
-        this.in = in;
-        this.out = out;
+    public ScoreCard(List<Hole> holes) {
+        holes.toArray(this.holes);
+    }
+
+    public Hole[] getHoles() {
+        return holes;
+    }
+
+    public Hole getHole(int number) {
+        return holes[number];
     }
 
     public int getIn() {
-        return in;
-    }
-
-    public void setIn(int in) {
-        this.in = in;
+        return countScore(10, 18);
     }
 
     public int getOut() {
-        return out;
+        return countScore(1, 9);
     }
 
-    public void setOut(int out) {
-        this.out = out;
+    private int countScore(int start, int stop) {
+        int result = 0;
+        for (int i = start - 1; i < stop; i++) {
+            result += holes[i].getScore();
+        }
+        return result;
     }
 
     public int getTotal() {

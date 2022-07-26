@@ -54,31 +54,19 @@ public class Player {
         return getMasters().getTotal() + getNewCourse().getTotal();
     }
 
+    public int getTotalOut() {
+        return getMasters().getOut() + getNewCourse().getOut();
+    }
+
+    public int getTotalIn() {
+        return getMasters().getIn() + getNewCourse().getIn();
+    }
+
     public int getMastersTotal() {
         return getMasters().getTotal();
     }
 
-    public int getMastersIn() {
-        return getMasters().getIn();
-    }
-
-
-    public int getMastersOut() {
-        return getMasters().getOut();
-    }
-
-
     public int getNewTotal() {
         return getNewCourse().getTotal();
-    }
-
-
-    public int getNewIn() {
-        return getNewCourse().getIn();
-    }
-
-
-    public int getNewOut() {
-        return getNewCourse().getOut();
     }
 }
