@@ -7,9 +7,12 @@ import java.util.List;
 public class ScoreCard {
 
     private final Hole[] holes = new Hole[18];
+    private final int numberOfRelocks;
+    private int numberOfRelocksUsed;
 
-    public ScoreCard(List<Hole> holes) {
+    public ScoreCard(List<Hole> holes, int numberOfRelocks) {
         holes.toArray(this.holes);
+        this.numberOfRelocks = numberOfRelocks;
     }
 
     public Hole[] getHoles() {
@@ -38,5 +41,9 @@ public class ScoreCard {
 
     public int getTotal() {
         return getIn() + getOut();
+    }
+
+    public int getNumberOfRelocks() {
+        return numberOfRelocks;
     }
 }

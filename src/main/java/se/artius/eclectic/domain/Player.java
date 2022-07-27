@@ -2,6 +2,7 @@ package se.artius.eclectic.domain;
 
 public class Player {
 
+    private Integer id;
     private String firstName;
     private String lastName;
     private ScoreCard masters;
@@ -11,11 +12,16 @@ public class Player {
 
     }
     
-    public Player(String firstName, String lastName, ScoreCard masters, ScoreCard newCourse) {
+    public Player(Integer id, String firstName, String lastName, ScoreCard masters, ScoreCard newCourse) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.masters = masters;
         this.newCourse = newCourse;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getFirstName() {
