@@ -15,12 +15,35 @@ public class ScoreCard {
         this.numberOfRelocks = numberOfRelocks;
     }
 
+    private void updateScore(int number, int score) {
+        getHole(number).setScore(score);
+        System.out.println("Scoren är uppdaterad och det nya resultatet är " + score + ".");
+        getHole(number).setLocked(true);
+    }
+
+    public void relockAndUpdateScore(int number, int score) {
+        if (getHole(number).isLocked()) {
+            if (getNumberOfRelocks() > 0) {
+                updateScore(number, score);
+                increaseNumberOfRelocks();
+            } else {
+                System.out.println("Hålet är redan låst och det finns inga omlåsningar kvar.");
+            }
+        } else {
+            updateScore(number, score);
+        }
+    }
+
+    private void increaseNumberOfRelocks() {
+        numberOfRelocksUsed--;
+    }
+
     public Hole[] getHoles() {
         return holes;
     }
 
     public Hole getHole(int number) {
-        return holes[number];
+        return holes[number - 1];
     }
 
     public int getIn() {

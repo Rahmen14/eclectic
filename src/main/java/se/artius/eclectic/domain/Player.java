@@ -2,6 +2,9 @@ package se.artius.eclectic.domain;
 
 public class Player {
 
+    public static final String MASTERS = "masters";
+    public static final String NEW_COURSE = "new";
+
     private Integer id;
     private String firstName;
     private String lastName;
@@ -11,13 +14,24 @@ public class Player {
     public Player() {
 
     }
-    
+
     public Player(Integer id, String firstName, String lastName, ScoreCard masters, ScoreCard newCourse) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.masters = masters;
         this.newCourse = newCourse;
+    }
+
+    public ScoreCard getScoreCard(String courseName) {
+        if (courseName.equals(MASTERS)) {
+            return getMasters();
+        } else if (courseName.equals(NEW_COURSE)) {
+            return getNewCourse();
+        } else {
+            System.out.println("Det finns ingen banan med det namnet.");
+            return null;
+        }
     }
 
     public Integer getId() {

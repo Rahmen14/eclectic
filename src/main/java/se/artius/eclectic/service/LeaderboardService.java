@@ -1,9 +1,7 @@
 package se.artius.eclectic.service;
 
 import org.springframework.stereotype.Service;
-import se.artius.eclectic.domain.Hole;
 import se.artius.eclectic.domain.Player;
-import se.artius.eclectic.domain.ScoreCard;
 import se.artius.eclectic.repository.PlayerMockRepository;
 import se.artius.eclectic.repository.PlayerRepository;
 

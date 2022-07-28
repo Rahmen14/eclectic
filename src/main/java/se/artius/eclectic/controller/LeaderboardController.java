@@ -3,10 +3,8 @@ package se.artius.eclectic.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.artius.eclectic.domain.Player;
-import se.artius.eclectic.domain.ScoreCard;
 import se.artius.eclectic.service.LeaderboardService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
