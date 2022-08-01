@@ -1,29 +1,31 @@
 package se.artius.eclectic.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import se.artius.eclectic.domain.Player;
 import se.artius.eclectic.repository.PlayerMockRepository;
 import se.artius.eclectic.repository.PlayerRepository;
+import se.artius.eclectic.service.PlayerService;
 
 import java.util.List;
 
 @RestController
 public class PlayerController {
 
-    private final PlayerRepository repository = new PlayerMockRepository();
-
+    @Autowired
+    private PlayerService service;
 
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/players")
-    List<Player> all() {
-        return repository.getAll();
+    public List<Player> all() {
+        return service.getAll();
     }
     // end::get-aggregate-root[]
 
     @PostMapping("/players")
-    Player newPlayer(@RequestBody Player newEmployee) {
+    public Player newPlayer(@RequestBody Player newEmployee) {
         //return repository.save(newEmployee);
         return null;
     }
@@ -31,9 +33,9 @@ public class PlayerController {
     // Single item
 
     @GetMapping("/players/{id}")
-    Player one(@PathVariable Integer id) {
+    public Player one(@PathVariable Integer id) {
 
-        return repository.get(id);
+        return service.getById(id);
         //.orElseThrow(() -> new EmployeeNotFoundException(id));
     }
 
@@ -41,7 +43,7 @@ public class PlayerController {
     Player updateScore(@RequestBody Integer score, @PathVariable Integer id, @PathVariable String course, @PathVariable Integer hole) {
 
         System.out.println("Player: " + id + " Course: " + course + " Hole: " + hole);
-        Player player = repository.get(id);
+        Player player = service.getById(id);
         player.getScoreCard(course).relockAndUpdateScore(hole, score);
         return player;
     }

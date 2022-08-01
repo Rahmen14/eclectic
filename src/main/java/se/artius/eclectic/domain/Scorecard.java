@@ -1,18 +1,20 @@
 package se.artius.eclectic.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import javax.persistence.*;
 import java.util.List;
 
-public class ScoreCard {
+@Entity
+public class Scorecard {
 
-    private final Hole[] holes = new Hole[18];
-    private final int numberOfRelocks;
-    private int numberOfRelocksUsed;
 
-    public ScoreCard(List<Hole> holes, int numberOfRelocks) {
-        holes.toArray(this.holes);
-        this.numberOfRelocks = numberOfRelocks;
+    private @Id Integer id;
+    @OneToMany
+    @JoinColumn(name="scorecard", nullable=false)
+    private List<Hole> holes;
+    private int numberofrelocks;
+    private int numberofrelocksused;
+
+    public Scorecard() {
     }
 
     private void updateScore(int number, int score) {
@@ -23,9 +25,9 @@ public class ScoreCard {
 
     public void relockAndUpdateScore(int number, int score) {
         if (getHole(number).isLocked()) {
-            if (getNumberOfRelocks() > 0) {
+            if (getNumberofrelocks() > 0) {
                 updateScore(number, score);
-                increaseNumberOfRelocks();
+                increaseNumberOfRelocksUsed();
             } else {
                 System.out.println("Hålet är redan låst och det finns inga omlåsningar kvar.");
             }
@@ -34,16 +36,16 @@ public class ScoreCard {
         }
     }
 
-    private void increaseNumberOfRelocks() {
-        numberOfRelocksUsed--;
+    private void increaseNumberOfRelocksUsed() {
+        numberofrelocksused++;
     }
 
     public Hole[] getHoles() {
-        return holes;
+        return holes.toArray(new Hole[18]);
     }
 
     public Hole getHole(int number) {
-        return holes[number - 1];
+        return getHoles()[number - 1];
     }
 
     public int getIn() {
@@ -56,6 +58,7 @@ public class ScoreCard {
 
     private int countScore(int start, int stop) {
         int result = 0;
+        Hole[] holes = getHoles();
         for (int i = start - 1; i < stop; i++) {
             result += holes[i].getScore();
         }
@@ -66,7 +69,7 @@ public class ScoreCard {
         return getIn() + getOut();
     }
 
-    public int getNumberOfRelocks() {
-        return numberOfRelocks;
+    public int getNumberofrelocks() {
+        return numberofrelocks;
     }
 }

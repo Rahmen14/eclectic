@@ -2,7 +2,6 @@ package se.artius.eclectic.repository;
 
 import se.artius.eclectic.domain.Hole;
 import se.artius.eclectic.domain.Player;
-import se.artius.eclectic.domain.ScoreCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +26,7 @@ public class PlayerMockRepository implements PlayerRepository {
     }
 
     private void createMockdata() {
+        /*
         players.put(1, new Player(1, "Mattias", "Ryd", new ScoreCard(createScoreCardMasters(), 5), new ScoreCard(createScoreCardNewCourse(), 5)));
         players.put(2, new Player(2, "Linus", "Rahm", new ScoreCard(createScoreCardMasters(), 5), new ScoreCard(createScoreCardNewCourse(), 5)));
         players.put(3, new Player(3, "Johan", "Rahm", new ScoreCard(createScoreCardMasters(), 5), new ScoreCard(createScoreCardNewCourse(), 5)));
@@ -36,6 +36,8 @@ public class PlayerMockRepository implements PlayerRepository {
         players.put(7, new Player(7, "Felix", "Rahm", new ScoreCard(createScoreCardMasters(), 5), new ScoreCard(createScoreCardNewCourse(), 5)));
         players.put(8, new Player(8, "Niclas", "Wallster", new ScoreCard(createScoreCardMasters(), 5), new ScoreCard(createScoreCardNewCourse(), 5)));
         players.put(9, new Player(9, "Lasse", "Lehtiheimo", new ScoreCard(createScoreCardMasters(), 5), new ScoreCard(createScoreCardNewCourse(), 5)));
+
+         */
     }
 
     private List<Hole> createScoreCardMasters() {

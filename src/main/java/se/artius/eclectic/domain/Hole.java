@@ -1,20 +1,26 @@
 package se.artius.eclectic.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Hole {
 
-    private final int number;
-    private final int par;
+    private @Id Integer id;
+    private int par;
     private int score;
     private boolean locked = false;
 
-    public Hole(int number, int par) {
-        this.number = number;
+    public Hole() {
+    }
+
+    public Hole(int id, int par) {
+        this.id = id;
         this.par = par;
         this.score = par + 2;
     }
 
-    public int getNumber() {
-        return number;
+    public int getId() {
+        return id;
     }
 
     public int getPar() {

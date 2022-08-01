@@ -1,5 +1,6 @@
 package se.artius.eclectic.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.artius.eclectic.domain.Player;
@@ -10,7 +11,8 @@ import java.util.List;
 @RestController
 public class LeaderboardController {
 
-    private final LeaderboardService service = new LeaderboardService();
+    @Autowired
+    private LeaderboardService service;
 
     @GetMapping("/leaderboard")
     public List<Player> leaderboard() {

@@ -1,29 +1,36 @@
 package se.artius.eclectic.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Player {
 
     public static final String MASTERS = "masters";
     public static final String NEW_COURSE = "new";
 
-    private Integer id;
-    private String firstName;
-    private String lastName;
-    private ScoreCard masters;
-    private ScoreCard newCourse;
+    private @Id Integer id;
+    private String firstname;
+    private String lastname;
+    @OneToOne
+    @JoinColumn(name="masters")
+    private Scorecard masters;
+    @OneToOne
+    @JoinColumn(name="newcourse")
+    private Scorecard newCourse;
 
     public Player() {
 
     }
 
-    public Player(Integer id, String firstName, String lastName, ScoreCard masters, ScoreCard newCourse) {
+    public Player(Integer id, String firstname, String lastname, Scorecard masters, Scorecard newCourse) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.masters = masters;
         this.newCourse = newCourse;
     }
 
-    public ScoreCard getScoreCard(String courseName) {
+    public Scorecard getScoreCard(String courseName) {
         if (courseName.equals(MASTERS)) {
             return getMasters();
         } else if (courseName.equals(NEW_COURSE)) {
@@ -38,35 +45,35 @@ public class Player {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public ScoreCard getMasters() {
+    public Scorecard getMasters() {
         return masters;
     }
 
-    public void setMasters(ScoreCard masters) {
+    public void setMasters(Scorecard masters) {
         this.masters = masters;
     }
 
-    public ScoreCard getNewCourse() {
+    public Scorecard getNewCourse() {
         return newCourse;
     }
 
-    public void setNewCourse(ScoreCard newCourse) {
+    public void setNewCourse(Scorecard newCourse) {
         this.newCourse = newCourse;
     }
 
